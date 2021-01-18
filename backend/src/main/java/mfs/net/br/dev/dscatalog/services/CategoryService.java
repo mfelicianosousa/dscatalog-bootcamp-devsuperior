@@ -1,7 +1,7 @@
 package mfs.net.br.dev.dscatalog.services;
 
 import java.util.List;
-import java.util.stream.Collector;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import mfs.net.br.dev.dscatalog.dto.CategoryDTO;
 import mfs.net.br.dev.dscatalog.entities.Category;
 import mfs.net.br.dev.dscatalog.repositories.CategoryRepository;
+import mfs.net.br.dev.dscatalog.services.exceptions.EntityNotFoundException;
 
 @Service
 public class CategoryService {
@@ -26,6 +27,16 @@ public class CategoryService {
 		return list.stream().map( x -> new CategoryDTO(x)).collect( Collectors.toList()) ;
 		
 		
+	}
+
+	@Transactional(readOnly = true)
+	public CategoryDTO findById(Long id) {
+		
+		Optional<Category> obj = repository.findById(id) ;
+		
+		Category entity = obj.orElseThrow(()-> new EntityNotFoundException("Entity not found"));
+		
+		return new CategoryDTO(entity) ;
 	}
 
 }
