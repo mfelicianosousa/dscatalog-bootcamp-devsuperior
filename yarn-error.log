@@ -1,0 +1,36 @@
+Arguments: 
+  D:\Program Files\nodejs\node.exe C:\Users\marce\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js init
+
+PATH: 
+  C:\Users\marce\bin;D:\Git\mingw64\bin;D:\Git\usr\local\bin;D:\Git\usr\bin;D:\Git\usr\bin;D:\Git\mingw64\bin;D:\Git\usr\bin;C:\Users\marce\bin;C:\Python39\Scripts;C:\Python39;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Embarcadero\Studio\20.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl;C:\Program Files (x86)\Embarcadero\Studio\20.0\bin64;C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\Win64;D:\Program Files (x86)\CollabNet;D:\Program Files (x86)\Embarcadero\RAD Studio\9.0\bin;C:\Users\Public\Documents\RAD Studio\9.0\Bpl;D:\Program Files (x86)\Embarcadero\RAD Studio\9.0\bin64;C:\Users\Public\Documents\RAD Studio\9.0\Bpl\Win64;D:\ProgramData\Anaconda3;D:\ProgramData\Anaconda3\Library\mingw-w64\bin;D:\ProgramData\Anaconda3\Library\usr\bin;D:\ProgramData\Anaconda3\Library\bin;D:\ProgramData\Anaconda3\Scripts;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\OpenSSH;C:\WINDOWS\System32\WindowsPowerShell\v1.0;D:\App\Java\jdk-11.0.9\bin;D:\AppServers\dbhomeXE\bin;D:\Python38\Scripts;D:\Python38;D:\Python37;D:\Python37\Scripts;D:\App\Java\javapath;D:\Program Files (x86)\Falcon\MinGW\bin;C:\Program Files (x86)\Embarcadero\Studio\19.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl;C:\Program Files (x86)\Embarcadero\Studio\19.0\bin64;C:\Program Files\Microsoft MPI\Bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Brackets\command;C:\Program Files\dotnet;D:\php7;D:\Program Files\PuTTY;D:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;D:\Git\cmd;D:\Program Files\MiKTeX 2.9\miktex\bin\x64;C:\ProgramData\chocolatey\bin;D:\cmder\cmder.exe;C:\Program Files\Azure Data Studio\bin;D:\Program Files\Android\SDK\Android\SDK;D:\Program Files\Android\SDK\Android\SDK\plantform-tools;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn;C:\Program Files\Microsoft SQL Server\140\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn;C:\Program Files\Microsoft SQL Server\140\DTS\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn;D:\Program Files\nodejs;C:\Users\marce\AppData\Local\Programs\Python\Python36\Scripts;C:\Users\marce\AppData\Local\Programs\Python\Python36;C:\Users\Public\Documents\RAD Studio\7.0\Bpl;D:\Python37\Scripts;D:\Python37;C:\Users\marce\AppData\Local\Microsoft\WindowsApps;D:\Microsoft VS Code\bin;D:\php7;D:\Program Files\Android\Flutter_v1.0.0-stable\flutter\bin;D:\Program Files\Android\SDK\platform-tools;D:\Program Files\Android\SDK\tools;C:\MinGW\bin;D:\Apache-Maven-3.6.1\bin;C:\Users\marce\.dotnet\tools;D:\Program Files (x86)\Sophos\Sophos SSL VPN Client\bin;C:\Users\marce\AppData\Local\Microsoft\WindowsApps;D:\Program Files\heroku\bin;C:\Users\marce\AppData\Roaming\npm;D:\Git\usr\bin\vendor_perl;D:\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.15.4
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (C:\Users\marce\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:136216:13)
+      at Interface.emit (events.js:315:20)
+      at Interface._ttyWrite (readline.js:875:16)
+      at ReadStream.onkeypress (readline.js:213:10)
+      at ReadStream.emit (events.js:315:20)
+      at emitKeys (internal/readline/utils.js:345:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1144:36)
+      at ReadStream.emit (events.js:315:20)
+      at addChunk (internal/streams/readable.js:309:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
