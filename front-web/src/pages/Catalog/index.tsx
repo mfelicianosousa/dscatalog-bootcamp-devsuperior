@@ -5,6 +5,7 @@ import { makeRequest } from 'core/utils/request';
 import { ProductsResponse } from 'core/types/Product';
 import './styles.scss' ;
 import ProductCardLoader from './components/Loaders/ProductCardLoader';
+import Pagination from 'core/components/Pagination';
 
 const Catalog = () => {
 
@@ -13,6 +14,8 @@ const Catalog = () => {
     const [productsResponse, setProductsResponse ] = useState<ProductsResponse>();
     // estado 
     const [isLoading, setIsLoading] = useState(false);
+    // estado para representar a página ativa que está sendo renderizada
+    const [activePage, setActivePage ] = useState(0) ;
 
 
     //console.log(productsResponse ) ;
@@ -21,7 +24,7 @@ const Catalog = () => {
     // não tem suporte nativo para enviar query string
     useEffect(() => {
         const params ={
-            page: 0,
+            page: activePage,
             linesPerPage: 12
         }
         // Inicia o Loader
@@ -33,7 +36,7 @@ const Catalog = () => {
             setIsLoading( false ) ;
         });
 
-    },[] ) ;
+    },[activePage] ) ;
 
     return (
         <div className="catalog-container">
@@ -50,6 +53,12 @@ const Catalog = () => {
                )}
                 
             </div>
+            { productsResponse && 
+               < Pagination 
+                  totalPages={ productsResponse.totalPages }
+                  activePage={ activePage }  
+                  onChange={ page => setActivePage( page )}
+                /> }
         </div>
     ) ;
 }
