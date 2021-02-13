@@ -1,5 +1,8 @@
 package mfs.net.br.dev.dscatalog.dto;
 
+import mfs.net.br.dev.dscatalog.services.validation.UserInsertValid;
+
+@UserInsertValid
 public class UserInsertDTO extends UserDTO {
 	
 	private String password ;
