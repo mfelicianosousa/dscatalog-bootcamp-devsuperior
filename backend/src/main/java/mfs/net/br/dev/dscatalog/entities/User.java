@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,8 +25,12 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id ;
+	
+	@Column(unique=true)
 	private String login ;
 	private String password ;
+	
+	@Column(unique=true)
 	private String email ;
 	private String Keyword ; 
 	private String firstName ;
@@ -33,7 +39,7 @@ public class User implements Serializable {
 	private Date   dateExpires ;
 	private String status ;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable( name="user_role",
 		joinColumns =@JoinColumn(name="user_id"),
 		inverseJoinColumns=@JoinColumn(name="role_id"))
