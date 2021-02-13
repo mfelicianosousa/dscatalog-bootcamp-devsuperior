@@ -1,7 +1,7 @@
 package mfs.net.br.dev.dscatalog.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="user")
@@ -26,8 +27,10 @@ public class User implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id ;
 	
+	
 	@Column(unique=true)
 	private String login ;
+	
 	private String password ;
 	
 	@Column(unique=true)
@@ -36,7 +39,7 @@ public class User implements Serializable {
 	private String firstName ;
 	private String lastName ;
 	private String active ;
-	private Date   dateExpires ;
+	private Instant dateExpires ;
 	private String status ;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
@@ -99,10 +102,10 @@ public class User implements Serializable {
 	}
 	
 	
-	public Date getDateExpires() {
+	public Instant getDateExpires() {
 		return dateExpires;
 	}
-	public void setDateExpires(Date dateExpires) {
+	public void setDateExpires(Instant dateExpires) {
 		this.dateExpires = dateExpires;
 	}
 	public String getStatus() {

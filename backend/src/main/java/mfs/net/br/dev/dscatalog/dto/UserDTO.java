@@ -1,23 +1,32 @@
 package mfs.net.br.dev.dscatalog.dto;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import mfs.net.br.dev.dscatalog.entities.Category;
-import mfs.net.br.dev.dscatalog.entities.Product;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 import mfs.net.br.dev.dscatalog.entities.User;
 
 public class UserDTO {
 
 	private Long id ;
+	
+	@NotBlank(message = "Preenchimento do campo obrigátorio")
 	private String login ;
+	
+	@Email(message="Favor entrar com um email válido")
 	private String email ;
+	
 	private String Keyword ; 
+	
+	@NotBlank(message = "Preenchimento do campo obrigátorio")
 	private String firstName ;
 	private String lastName ;
 	private String active ;
-	private Date   dateExpires ;
+	private Instant dateExpires ;
 	private String status ;
 	
 	Set<RoleDTO> roles = new HashSet<>();
@@ -27,7 +36,7 @@ public class UserDTO {
 	}
 
 	public UserDTO(Long id, String login, String email, String keyword, String firstName,
-			String lastName, String active, Date dateExpires, String status) {
+			String lastName, String active, Instant dateExpires, String status) {
 		this.id = id;
 		this.login = login;
 		this.email = email;
@@ -108,11 +117,11 @@ public class UserDTO {
 		this.active = active;
 	}
 
-	public Date getDateExpires() {
+	public Instant getDateExpires() {
 		return dateExpires;
 	}
 
-	public void setDateExpires(Date dateExpires) {
+	public void setDateExpires(Instant dateExpires) {
 		this.dateExpires = dateExpires;
 	}
 

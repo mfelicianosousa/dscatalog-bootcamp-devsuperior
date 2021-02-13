@@ -3,6 +3,8 @@ package mfs.net.br.dev.dscatalog.dto;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.validation.constraints.NotBlank;
+
 import mfs.net.br.dev.dscatalog.entities.Category;
 import mfs.net.br.dev.dscatalog.entities.Product;
 import mfs.net.br.dev.dscatalog.entities.Role;
@@ -11,6 +13,8 @@ public class RoleDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Long id ;
+	
+	@NotBlank(message = "Campo obrigátorio")
 	private String authority ;
 	
 	public RoleDTO(){
