@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name="user")
+@Table(name="tb_User")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -43,7 +43,7 @@ public class User implements Serializable {
 	private String status ;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable( name="user_role",
+	@JoinTable( name="tb_user_role",
 		joinColumns =@JoinColumn(name="user_id"),
 		inverseJoinColumns=@JoinColumn(name="role_id"))
 	private Set<Role> roles = new HashSet<>() ;

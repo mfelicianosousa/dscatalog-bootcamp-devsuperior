@@ -16,7 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="product")
+@Table(name="tb_product")
 public class Product implements Serializable {
 	
 	private static final long serialVersionUID = 1L ;
@@ -36,7 +36,7 @@ public class Product implements Serializable {
 	private Instant date ;
 	
 	@ManyToMany
-	@JoinTable(name="product_category",
+	@JoinTable(name="tb_product_category",
 	joinColumns = @JoinColumn(name="product_id"),
 	inverseJoinColumns = @JoinColumn(name ="category_id"))
 	Set< Category > categories = new HashSet<>();
