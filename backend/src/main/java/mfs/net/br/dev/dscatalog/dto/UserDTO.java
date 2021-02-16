@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
@@ -23,11 +24,15 @@ public class UserDTO {
 	private String Keyword ; 
 	
 	@NotBlank(message = "Preenchimento do campo obrigátorio")
-	private String firstName ;
-	private String lastName ;
-	private String active ;
-	private Instant dateExpires ;
-	private String status ;
+	private String  firstName ;
+	private String  lastName ;
+	private Boolean enabled ;
+	private Date 	expiryDate ;
+	private Boolean accountExpired ;
+	private Boolean accountLocked ;
+	private Boolean credentialExpired ;
+	private Date 	dateCreated ;
+	private Date    dateUp ;
 	
 	Set<RoleDTO> roles = new HashSet<>();
 	
@@ -36,16 +41,22 @@ public class UserDTO {
 	}
 
 	public UserDTO(Long id, String login, String email, String keyword, String firstName,
-			String lastName, String active, Instant dateExpires, String status) {
+			String lastName, Boolean enabled, Date expiryDate, Boolean accountExpired, 
+			Boolean accountLocked, Boolean credentialExpired, Date 	dateCreated,
+			Date    dateUp ) {
 		this.id = id;
 		this.login = login;
 		this.email = email;
 		this.Keyword = keyword;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.active = active;
-		this.dateExpires = dateExpires;
-		this.status = status;
+		this.enabled = enabled;
+		this.expiryDate = expiryDate;
+		this.accountExpired = accountExpired ;
+		this.accountLocked = accountLocked ;
+		this.credentialExpired = credentialExpired ;
+		this.dateCreated = dateCreated ;
+		this.dateUp = dateUp ;
 	}
 	
 	public UserDTO(User entity) {
@@ -55,9 +66,14 @@ public class UserDTO {
 		Keyword = entity.getKeyword() ;
 		firstName = entity.getFirstName();
 		lastName = entity.getLastName();
-		active = entity.getActive();
-		dateExpires = entity.getDateExpires();
-		status = entity.getStatus();
+		enabled = entity.getEnabled();
+		expiryDate = entity.getExpiryDate();
+		accountExpired = entity.getAccountExpired() ;
+		accountLocked = entity.getAccountLocked() ;
+		credentialExpired = entity.getCredentialExpired() ;
+		dateCreated = entity.getDateCreated() ;
+		dateUp = entity.getDateUp() ;
+
 		entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
 	}
 
@@ -109,28 +125,61 @@ public class UserDTO {
 		this.lastName = lastName;
 	}
 
-	public String getActive() {
-		return active;
+	
+	public Boolean getEnabled() {
+		return enabled;
 	}
 
-	public void setActive(String active) {
-		this.active = active;
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
-	public Instant getDateExpires() {
-		return dateExpires;
+	public Date getExpiryDate() {
+		return expiryDate;
 	}
 
-	public void setDateExpires(Instant dateExpires) {
-		this.dateExpires = dateExpires;
+	public void setExpiryDate(Date expiryDate) {
+		this.expiryDate = expiryDate;
 	}
 
-	public String getStatus() {
-		return status;
+	public Boolean getAccountExpired() {
+		return accountExpired;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setAccountExpired(Boolean accountExpired) {
+		this.accountExpired = accountExpired;
+	}
+
+	public Boolean getAccountLocked() {
+		return accountLocked;
+	}
+
+	public void setAccountLocked(Boolean accountLocked) {
+		this.accountLocked = accountLocked;
+	}
+
+	public Boolean getCredentialExpired() {
+		return credentialExpired;
+	}
+
+	public void setCredentialExpired(Boolean credentialExpired) {
+		this.credentialExpired = credentialExpired;
+	}
+
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public Date getDateUp() {
+		return dateUp;
+	}
+
+	public void setDateUp(Date dateUp) {
+		this.dateUp = dateUp;
 	}
 
 	public Set<RoleDTO> getRoles() {
