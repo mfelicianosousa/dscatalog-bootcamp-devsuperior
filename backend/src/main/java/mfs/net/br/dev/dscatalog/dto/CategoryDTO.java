@@ -1,5 +1,6 @@
 package mfs.net.br.dev.dscatalog.dto;
 
+
 import java.io.Serializable;
 
 import mfs.net.br.dev.dscatalog.entities.Category;

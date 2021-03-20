@@ -14,20 +14,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder ;
 	
 	@Autowired
-	private UserDetailsService userDetailService;
-	
-	
+	private UserDetailsService userDetailsService ;
+		
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService( userDetailService).passwordEncoder(passwordEncoder) ;
-		
-	}
 
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder) ;
+	}
+  
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/actuator/**");
@@ -36,8 +36,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	@Bean
 	protected AuthenticationManager authenticationManager() throws Exception {
+		
 		return super.authenticationManager();
 	}
 	
 	
 }
+

@@ -64,17 +64,17 @@ public class UserResource {
 	@PostMapping
 	public ResponseEntity< UserDTO > insert(@Valid @RequestBody UserInsertDTO dto ) {
 		
-		 UserDTO newDto = service.insert( dto );
+		 UserDTO  newDTO = service.insert( dto );
 		 URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				 .buildAndExpand(newDto.getId()).toUri();	
+				 .buildAndExpand(newDTO.getId()).toUri();	
 		 
-		return ResponseEntity.created(uri).body( newDto ) ;
+		return ResponseEntity.created(uri).body( newDTO ) ;
 	}
 	
 	@PutMapping(value ="/{id}")
 	public ResponseEntity< UserDTO > update(@PathVariable Long id, @Valid @RequestBody UserUpdateDTO dto ) {
 		
-		 UserDTO newDto = service.update( id, dto );
+		UserDTO newDto = service.update( id, dto );
 		 
 		return ResponseEntity.ok().body( newDto ) ;
 	}

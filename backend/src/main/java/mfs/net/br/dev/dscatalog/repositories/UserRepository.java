@@ -6,11 +6,8 @@ import org.springframework.stereotype.Repository;
 import mfs.net.br.dev.dscatalog.entities.User;
 
 @Repository
-public interface UserRepository extends JpaRepository< User, Long> {
-	
+public interface UserRepository extends JpaRepository<User, Long> {
 	
 	User findByEmail( String email ) ;
-	
-	User findByLogin( String login ) ;
-	
+
 }

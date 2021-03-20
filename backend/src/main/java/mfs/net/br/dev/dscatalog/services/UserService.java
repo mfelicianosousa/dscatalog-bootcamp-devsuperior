@@ -1,6 +1,5 @@
 package mfs.net.br.dev.dscatalog.services;
 
-import java.util.Date;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -33,21 +32,22 @@ import mfs.net.br.dev.dscatalog.services.exceptions.ResourceNotFoundException;
 @Service
 public class UserService implements UserDetailsService {
 	
-	private static Logger logger = LoggerFactory.getLogger(UserService.class );
+	private static Logger logger = LoggerFactory.getLogger( UserService.class ) ;
 	
-	@Autowired
+	@Autowired 
 	private BCryptPasswordEncoder passwordEncoder ;
 	
 	@Autowired
-	private UserRepository repository ;
+	private UserRepository userRepository ;
 	
 	@Autowired
 	private RoleRepository roleRepository ;
 	
+		
 	@Transactional(readOnly = true)
 	public Page<UserDTO> findAllPaged(PageRequest pageRequest) {
 		
-		Page<User> list = repository.findAll( pageRequest ) ;
+		Page<User> list = userRepository.findAll( pageRequest ) ;
 		
 		return list.map( x -> new UserDTO(x)) ;
 		
@@ -56,17 +56,21 @@ public class UserService implements UserDetailsService {
 
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
-		Optional<User> obj = repository.findById(id) ;
+		
+		Optional<User> obj = userRepository.findById(id) ;
+		
 		User entity = obj.orElseThrow(()-> new ResourceNotFoundException("Entity not found"));
-		return new UserDTO(entity ) ;
+		
+		return new UserDTO(entity) ;
 	}
 
 	@Transactional
 	public UserDTO insert(UserInsertDTO dto) {
+		
 		User entity = new User();
 		copyDtoToEntity( dto, entity ) ;
-		entity.setPassword( passwordEncoder.encode( dto.getPassword()));
-		entity = repository.save( entity ) ;
+		entity.setPassword(  passwordEncoder.encode(dto.getPassword())) ;
+		entity = userRepository.save( entity ) ;
 		return new UserDTO( entity ) ;
 	}
 
@@ -75,20 +79,22 @@ public class UserService implements UserDetailsService {
 	@Transactional
 	public UserDTO update(Long id, UserUpdateDTO dto) {
 		try {
-		  User entity = repository.getOne(id);
+		  User entity = userRepository.getOne(id);
 		  copyDtoToEntity( dto, entity ) ;
-		  entity = repository.save(entity); 
+	
+		  entity = userRepository.save(entity); 
 		  return new UserDTO(entity);
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id Not Found "+id ) ;
 			
 		}
 		
-	}  
+	}
+    
 	
 	public void delete(Long id) {
 		try {
-		  repository.deleteById(id);
+		  userRepository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException("Id not Found "+id) ;
 			
@@ -98,20 +104,10 @@ public class UserService implements UserDetailsService {
 	}
 	
 	private void copyDtoToEntity(UserDTO dto, User entity) {
-		
 		entity.setFirstName( dto.getFirstName());
-		entity.setLastName(dto.getFirstName());
-		entity.setLogin( dto.getLogin());
-		entity.setEmail(dto.getEmail());
-		entity.setKeyword(dto.getKeyword());
-		entity.setEnabled(dto.getEnabled());
-		entity.setExpiryDate(dto.getExpiryDate());
-		entity.setAccountExpired( dto.getAccountExpired()) ;
-		entity.setAccountLocked( dto.getAccountLocked()) ;
-		entity.setCredentialExpired( dto.getAccountExpired()) ;
-		entity.setDateCreated(dto.getDateCreated()) ;
-		entity.setDateUp(dto.getDateCreated()) ;
-		
+		entity.setLastName( dto.getLastName());
+		entity.setEmail( dto.getEmail());
+		//
 		
 		entity.getRoles().clear();
 		for ( RoleDTO roleDto : dto.getRoles()) {
@@ -123,13 +119,14 @@ public class UserService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = repository.findByEmail(username) ;
-		if (user == null ) {
-			logger.error("User Not Found: "+username );
+		 
+		User user = userRepository.findByEmail(username) ;
+		if (user == null) {
+			logger.error("User not found : "+username);
 			throw new UsernameNotFoundException("Email not found") ;
 		}
-		logger.info("User found: "+username ) ;
-		return user ;
+		logger.info("User found : "+username);
+		return user;
 	}
 
 }

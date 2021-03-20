@@ -1,3 +1,12 @@
+/* ******************************************************
+ * 
+ *           Validação da camada de Serviço
+ *           
+ *           ConstraintValidator Customizado
+ *           Criar uma Annotation 
+ * 			 BollerPlaite
+ * 			 Fazer uso da class UserInsertValidation
+ * */
 package mfs.net.br.dev.dscatalog.services.validation;
 
 import java.lang.annotation.ElementType;
@@ -7,8 +16,6 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-
-/* código boilerplate, constructor de Annotations */
 
 @Constraint(validatedBy = UserInsertValidator.class)
 @Target({ ElementType.TYPE })
@@ -20,4 +27,5 @@ public @interface UserInsertValid {
 	Class<?>[] groups() default {};
 
 	Class<? extends Payload>[] payload() default {};
+	
 }

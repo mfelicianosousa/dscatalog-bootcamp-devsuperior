@@ -11,6 +11,7 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+
 import mfs.net.br.dev.dscatalog.entities.Category;
 import mfs.net.br.dev.dscatalog.entities.Product;
 

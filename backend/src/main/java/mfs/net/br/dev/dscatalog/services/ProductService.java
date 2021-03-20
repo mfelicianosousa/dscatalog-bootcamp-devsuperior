@@ -55,8 +55,7 @@ public class ProductService {
 		
 		Product entity = new Product();
 		copyDtoToEntity( dto, entity ) ;
-		
-		
+
 		entity = repository.save( entity ) ;
 		return new ProductDTO( entity ) ;
 	}
@@ -68,7 +67,7 @@ public class ProductService {
 		try {
 		  Product entity = repository.getOne(id);
 		  copyDtoToEntity( dto, entity ) ;
-		//  entity.setName(dto.getName());
+	
 		  entity = repository.save(entity); 
 		  return new ProductDTO(entity);
 		} catch (EntityNotFoundException e) {

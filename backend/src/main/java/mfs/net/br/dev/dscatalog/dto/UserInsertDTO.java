@@ -3,12 +3,15 @@ package mfs.net.br.dev.dscatalog.dto;
 import mfs.net.br.dev.dscatalog.services.validation.UserInsertValid;
 
 @UserInsertValid
-public class UserInsertDTO extends UserDTO {
+public class UserInsertDTO extends UserDTO{	
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String password ;
 	
-	UserInsertDTO(){
+	public UserInsertDTO() {
 		super();
+		
 	}
 	
 	public String getPassword() {
@@ -19,7 +22,5 @@ public class UserInsertDTO extends UserDTO {
 		this.password = password;
 	}
 
-	
-	
 
 }
